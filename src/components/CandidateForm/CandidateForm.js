@@ -19,6 +19,7 @@ export const CandidateForm = () => {
         />
         <Input placeholder="Имя" label="Имя*" />
         <Input placeholder="Имя" label="Имя*" disabled />
+        <Input placeholder="Имя" label="Имя*" hasError caption="Input caption message."  disabled/>
         <Button text="Отправить" />
         <div style={{ marginTop: '20px' }}>
           <Button text="Отправить" disabled />

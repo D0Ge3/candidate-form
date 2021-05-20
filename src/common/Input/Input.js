@@ -15,7 +15,12 @@ export const Input = ({
   ...rest
 }) => {
   return (
-    <div className={cs(s.wrap, { [className]: className })}>
+    <div
+      className={cs(s.wrap, {
+        [className]: className,
+        [s.wrap_disabled_error]: disabled && hasError,
+      })}
+    >
       {label && (
         <label className={s.label} htmlFor={name}>
           {label}
