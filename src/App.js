@@ -1,5 +1,5 @@
-function App() {
-  return <div>React app</div>
-}
+import { CandidateForm } from './components/CandidateForm/CandidateForm'
 
-export default App
+export const App = () => {
+  return <CandidateForm />
+}
