@@ -29,6 +29,9 @@
   display: flex;
   align-items: center;
   margin-right: 40px;
+  @media(min-width: 620px) {
+    margin-right: 17%;
+  }
 }
 
 .radio {

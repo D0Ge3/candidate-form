@@ -1,35 +1,48 @@
+import { useState } from 'react'
 import { Input } from '../../common/Input/Input'
 import { Button } from '../../common/Button/Button'
+import { Radio } from '../../common/Radio/Radio'
+import { Agreement } from '../../common/Agreement/Agreement'
+import { Upload } from '../../common/Upload/Upload'
 
 import s from './CandidateForm.module.scss'
-import { Radio } from '../../common/Radio/Radio'
 
 export const CandidateForm = () => {
+  const [file, setFile] = useState(null)
   return (
     <div className={s.wrap}>
       <h2 className={s.title}>Анкета соискателя</h2>
       <form action="">
         <h3 className={s.subtitle}>Личные данные</h3>
-        <Input
-          className={s.field}
-          label="Имя *"
-          placeholder="Имя"
-          name="firstName"
-        />
-        <Input
-          className={s.field}
-          label="Фамилия *"
-          placeholder="Фамилия"
-          name="lastName"
-        />
-        <Input
-          className={s.field}
-          label="Электронная почта *"
-          placeholder="Электронная почта"
-          type="email"
-          name="email"
-        />
-        <div style={{ background: '#D9D9D9', height: '42px' }}></div>
+        <div className={s.personalData}>
+          <Input
+            className={s.field}
+            label="Имя *"
+            placeholder="Имя"
+            name="firstName"
+          />
+          <Input
+            className={s.field}
+            label="Фамилия *"
+            placeholder="Фамилия"
+            name="lastName"
+          />
+          <Input
+            className={s.field}
+            label="Электронная почта *"
+            placeholder="Электронная почта"
+            type="email"
+            name="email"
+          />
+          <Upload
+            value={file}
+            onChange={(e) => setFile(e.target.files[0])}
+            resetUpload={() => setFile(null)}
+            name="resumeUpload"
+            text="Загрузить резюме"
+            className={s.upload}
+          />
+        </div>
         <Radio
           className={s.sex}
           name="sex"
@@ -46,10 +59,15 @@ export const CandidateForm = () => {
           placeholder="Вставьте ссылку на Github"
           name="githubLink"
         />
-        <span>
-          <input type="checkbox" />* Я согласен с политикой конфиденциальности
-        </span>
-        <Button text="Отправить" />
+        <Agreement className={s.agreement} name="agreement">
+          <span>
+            * Я согласен с{' '}
+            <a onClick={() => console.log('show agreement')}>
+              политикой конфиденциальности
+            </a>
+          </span>
+        </Agreement>
+        <Button className={s.submit} text="Отправить" />
       </form>
     </div>
   )
