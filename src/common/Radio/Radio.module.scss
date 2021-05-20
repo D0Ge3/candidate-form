@@ -1,0 +1,44 @@
+.titleWrap {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 24px;  
+}
+
+.title {
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+}
+
+.caption {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8C8C8C;
+  line-height: 22px;
+  &_error {
+    color: #F5222D;
+  }
+}
+
+.radioBtsWrap {
+  display: flex;
+}
+
+.radioWrap {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+}
+
+.label {
+  margin-left: 8px;
+  color: #595959;
+  font-size: 14px;
+  font-weight: 400;
+}
