@@ -12,6 +12,7 @@ export const Input = ({
   label,
   className,
   disabled,
+  onBlur,
   ...rest
 }) => {
   return (
@@ -36,6 +37,7 @@ export const Input = ({
         value={value}
         onChange={onChange}
         disabled={disabled}
+        onBlur={onBlur}
         {...rest}
       />
       {caption && (

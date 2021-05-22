@@ -7,6 +7,7 @@ export const Radio = ({
   label,
   caption,
   options,
+  onChange,
   hasError,
   name,
 }) => {
@@ -29,6 +30,7 @@ export const Radio = ({
               name={name}
               id={option.value}
               value={option.value}
+              onChange={onChange}
             />
             <label className={s.label} htmlFor={option.value}>
               {option.text}

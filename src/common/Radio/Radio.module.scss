@@ -1,6 +1,6 @@
 .titleWrap {
+  position: relative;
   display: flex;
-  align-items: baseline;
   margin-bottom: 24px;  
 }
 
@@ -12,6 +12,7 @@
 
 .caption {
   margin-left: 8px;
+  align-self: flex-end;
   font-size: 14px;
   font-weight: 400;
   color: #8C8C8C;
