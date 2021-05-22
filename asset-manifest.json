@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/candidate-form/static/css/main.077ab855.chunk.css",
+    "main.js": "/candidate-form/static/js/main.0599ffcf.chunk.js",
+    "main.js.map": "/candidate-form/static/js/main.0599ffcf.chunk.js.map",
+    "runtime-main.js": "/candidate-form/static/js/runtime-main.dcd56ca4.js",
+    "runtime-main.js.map": "/candidate-form/static/js/runtime-main.dcd56ca4.js.map",
+    "static/css/2.679831fc.chunk.css": "/candidate-form/static/css/2.679831fc.chunk.css",
+    "static/js/2.f50af55b.chunk.js": "/candidate-form/static/js/2.f50af55b.chunk.js",
+    "static/js/2.f50af55b.chunk.js.map": "/candidate-form/static/js/2.f50af55b.chunk.js.map",
+    "static/js/3.2eaa989e.chunk.js": "/candidate-form/static/js/3.2eaa989e.chunk.js",
+    "static/js/3.2eaa989e.chunk.js.map": "/candidate-form/static/js/3.2eaa989e.chunk.js.map",
+    "index.html": "/candidate-form/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/candidate-form/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.077ab855.chunk.css.map": "/candidate-form/static/css/main.077ab855.chunk.css.map",
+    "static/js/2.f50af55b.chunk.js.LICENSE.txt": "/candidate-form/static/js/2.f50af55b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dcd56ca4.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.f50af55b.chunk.js",
+    "static/css/main.077ab855.chunk.css",
+    "static/js/main.0599ffcf.chunk.js"
+  ]
+}
