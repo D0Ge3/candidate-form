@@ -8,10 +8,10 @@ import { Button } from '../../common/Button/Button'
 import { Radio } from '../../common/Radio/Radio'
 import { Agreement } from '../../common/Agreement/Agreement'
 import { Upload } from '../../common/Upload/Upload'
-
-import s from './CandidateForm.module.scss'
 import { Modal } from '../Modal/Modal'
 import { Privacy } from '../Privacy/Privacy'
+
+import s from './CandidateForm.module.scss'
 
 const Schema = Yup.object().shape({
   firstName: Yup.string()
@@ -34,7 +34,7 @@ const Schema = Yup.object().shape({
 export const CandidateForm = () => {
   const [showPrivacy, setShowPrivacy] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
-  // const [openPrivacyModal, setOpenPrivacyModal] = useState(false)
+
   const formik = useFormik({
     initialValues: {
       lastName: '',
@@ -51,6 +51,22 @@ export const CandidateForm = () => {
       setShowSuccess(true)
     },
   })
+
+  const closeSuccessModal = () => {
+    setShowSuccess(false)
+    formik.resetForm()
+  }
+  const getError = (field) =>
+    errors[field] && touched[field] ? errors[field] : null
+
+  const submitIsDisable = !(
+    formik.values.firstName &&
+    formik.values.lastName &&
+    formik.values.email &&
+    formik.values.sex &&
+    formik.values.agreement
+  )
+
   const { touched, errors } = formik
   return (
     <div className={s.wrap}>
@@ -66,12 +82,8 @@ export const CandidateForm = () => {
             placeholder="Имя"
             name="firstName"
             onBlur={formik.handleBlur}
-            hasError={
-              errors.firstName && touched.firstName ? errors.firstName : null
-            }
-            caption={
-              errors.firstName && touched.firstName ? errors.firstName : null
-            }
+            hasError={getError('firstName')}
+            caption={getError('firstName')}
           />
           <Input
             className={s.field}
@@ -81,12 +93,8 @@ export const CandidateForm = () => {
             label="Фамилия *"
             placeholder="Фамилия"
             name="lastName"
-            hasError={
-              errors.lastName && touched.lastName ? errors.lastName : null
-            }
-            caption={
-              errors.lastName && touched.lastName ? errors.lastName : null
-            }
+            hasError={getError('lastName')}
+            caption={getError('lastName')}
           />
           <Input
             className={s.field}
@@ -97,8 +105,8 @@ export const CandidateForm = () => {
             placeholder="Электронная почта"
             type="email"
             name="email"
-            hasError={errors.email && touched.email ? errors.email : null}
-            caption={errors.email && touched.email ? errors.email : null}
+            hasError={getError('email')}
+            caption={getError('email')}
           />
           <Upload
             value={formik.values.resumeFile}
@@ -121,8 +129,8 @@ export const CandidateForm = () => {
             { value: 'male', text: 'Мужской' },
             { value: 'female', text: 'Женский' },
           ]}
-          hasError={errors.sex && touched.sex ? errors.sex : null}
-          caption={errors.sex && touched.sex ? errors.sex : null}
+          hasError={getError('sex')}
+          caption={getError('sex')}
         />
         <h3 className={s.subtitle}>Github</h3>
         <Input
@@ -134,12 +142,8 @@ export const CandidateForm = () => {
           label="Вставьте ссылку на Github"
           placeholder="Вставьте ссылку на Github"
           name="githubLink"
-          hasError={
-            errors.githubLink && touched.githubLink ? errors.githubLink : null
-          }
-          caption={
-            errors.githubLink && touched.githubLink ? errors.githubLink : null
-          }
+          hasError={getError('githubLink')}
+          caption={getError('githubLink')}
         />
         <Agreement
           value={formik.values.agreement}
@@ -152,15 +156,7 @@ export const CandidateForm = () => {
           onClick={formik.handleSubmit}
           className={s.submit}
           text="Отправить"
-          disabled={
-            !(
-              formik.values.firstName &&
-              formik.values.lastName &&
-              formik.values.email &&
-              formik.values.sex &&
-              formik.values.agreement
-            )
-          }
+          disabled={submitIsDisable}
         />
       </form>
       <Modal
@@ -170,13 +166,8 @@ export const CandidateForm = () => {
         confirmBtnText="Понятно"
         className={cs(s.modal, s.modal_confirm)}
         openModalClassname={s.modal_open_confirm}
-        onConfirm={() => {
-          setShowSuccess(false)
-          formik.resetForm()
-        }}
-        onClose={() => {
-          setShowSuccess(false)
-        }}
+        onConfirm={closeSuccessModal}
+        onClose={closeSuccessModal}
       />
       <Modal
         isOpen={showPrivacy}
