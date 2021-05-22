@@ -6,10 +6,10 @@ import * as cs from 'classnames'
 import { Input } from '../../common/Input/Input'
 import { Button } from '../../common/Button/Button'
 import { Radio } from '../../common/Radio/Radio'
-import { Agreement } from '../../common/Agreement/Agreement'
+import { Agreement } from '../Agreement/Agreement'
 import { Upload } from '../../common/Upload/Upload'
-import { Modal } from '../Modal/Modal'
-import { Privacy } from '../Privacy/Privacy'
+import { Modal } from '../../common/Modal/Modal'
+import { Privacy } from '../../common/Privacy/Privacy'
 
 import s from './CandidateForm.module.scss'
 

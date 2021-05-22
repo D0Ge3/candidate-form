@@ -1,6 +1,7 @@
 import * as cs from 'classnames'
-import s from './Privacy.module.scss'
 import { memo } from 'react'
+
+import s from './Privacy.module.scss'
 
 export let Privacy = ({ className }) => (
   <div className={cs(s.privacy, { [className]: className })}>
