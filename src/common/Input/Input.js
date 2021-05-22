@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import * as cs from 'classnames'
 
 import s from './Input.module.scss'
 
-export const Input = ({
+export let Input = ({
   value,
   onChange,
   type = 'text',
@@ -48,3 +49,5 @@ export const Input = ({
     </div>
   )
 }
+
+Input = memo(Input)

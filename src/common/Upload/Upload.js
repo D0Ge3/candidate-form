@@ -1,11 +1,13 @@
+import { memo } from 'react'
 import * as cs from 'classnames'
 
-import s from './Upload.module.scss'
 import { PlusIcon } from '../icons/PlusIcon'
 import { ClipIcon } from '../icons/ClipIcon'
 import { CloseIcon } from '../icons/CloseIcon'
 
-export const Upload = ({
+import s from './Upload.module.scss'
+
+export let Upload = ({
   className,
   text,
   name,
@@ -38,3 +40,4 @@ export const Upload = ({
     </div>
   )
 }
+Upload = memo(Upload)

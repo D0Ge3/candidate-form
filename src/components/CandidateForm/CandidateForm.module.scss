@@ -41,6 +41,46 @@
   margin-top: 24px;
 }
 
+.modal {
+  width: 90%;
+  left: 5%;
+  &_confirm {
+    max-width: 547px;
+    svg {
+      display: none;
+    }
+    @media (min-width: 600px) {
+      svg {
+        display: flex;
+      }
+      left: calc(50% - 273.5px)
+    }
+  }
+  &_privacy {
+    max-width: 758px;
+
+    @media (min-width: 839px) {
+      left: calc(50% - 379px)
+    }
+  }
+}
+
+.modal_open {
+  &_confirm {
+    top: 20vh !important;
+  }
+  &_privacy {
+    top: 10vh !important;
+    // height: 80%;
+  }
+}
+
+.privacy {
+  padding-right: 10px;
+}
+
+
+
 @media (min-width: 620px) {
   .wrap {
     width: 592px;

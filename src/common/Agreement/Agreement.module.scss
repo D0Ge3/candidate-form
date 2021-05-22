@@ -1,0 +1,42 @@
+.wrap {
+  display: flex;
+  
+}
+
+.labelWrap {
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+} 
+
+.label {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #595959;
+  white-space: nowrap;
+}
+
+.link {
+  text-decoration: none;
+  color: #1890FF;
+  position: relative;
+  white-space: nowrap;
+  margin-left: 3px;
+  font-size: 14px;
+  &::after {
+    content: '';
+    left: 0;
+    top: 16px;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: #1890FF;
+  }
+}

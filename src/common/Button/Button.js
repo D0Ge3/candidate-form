@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import * as cs from 'classnames'
 
 import s from './Button.module.scss'
 
-export const Button = ({ className, disabled, text, onClick, ...rest }) => {
+export let Button = ({ className, disabled, text, onClick, ...rest }) => {
   return (
     <button
       onClick={onClick}
@@ -16,3 +17,4 @@ export const Button = ({ className, disabled, text, onClick, ...rest }) => {
     </button>
   )
 }
+Button = memo(Button)

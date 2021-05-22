@@ -1,4 +1,5 @@
-export const PlusIcon = ({ className }) => (
+import { memo } from 'react'
+export let PlusIcon = ({ className }) => (
   <svg
     className={className}
     width="23"
@@ -17,3 +18,4 @@ export const PlusIcon = ({ className }) => (
     />
   </svg>
 )
+PlusIcon = memo(PlusIcon)

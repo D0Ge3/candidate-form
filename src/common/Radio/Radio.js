@@ -1,8 +1,9 @@
 import * as cs from 'classnames'
+import { memo } from 'react'
 
 import s from './Radio.module.scss'
 
-export const Radio = ({
+export let Radio = ({
   className,
   label,
   caption,
@@ -41,3 +42,4 @@ export const Radio = ({
     </div>
   )
 }
+Radio = memo(Radio)

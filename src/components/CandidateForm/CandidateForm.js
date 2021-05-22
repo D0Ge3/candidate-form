@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import * as cs from 'classnames'
 
 import { Input } from '../../common/Input/Input'
 import { Button } from '../../common/Button/Button'
 import { Radio } from '../../common/Radio/Radio'
-import { Check } from '../../common/Check/Check'
+import { Agreement } from '../../common/Agreement/Agreement'
 import { Upload } from '../../common/Upload/Upload'
 
 import s from './CandidateForm.module.scss'
+import { Modal } from '../Modal/Modal'
+import { Privacy } from '../Privacy/Privacy'
 
 const Schema = Yup.object().shape({
   firstName: Yup.string()
@@ -28,6 +32,9 @@ const Schema = Yup.object().shape({
 })
 
 export const CandidateForm = () => {
+  const [showPrivacy, setShowPrivacy] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+  // const [openPrivacyModal, setOpenPrivacyModal] = useState(false)
   const formik = useFormik({
     initialValues: {
       lastName: '',
@@ -41,6 +48,7 @@ export const CandidateForm = () => {
     validationSchema: Schema,
     onSubmit: (values) => {
       console.log(values)
+      setShowSuccess(true)
     },
   })
   const { touched, errors } = formik
@@ -122,6 +130,7 @@ export const CandidateForm = () => {
           value={formik.values.githubLink}
           onChange={formik.handleChange}
           className={s.field}
+          onBlur={formik.handleBlur}
           label="Вставьте ссылку на Github"
           placeholder="Вставьте ссылку на Github"
           name="githubLink"
@@ -132,19 +141,13 @@ export const CandidateForm = () => {
             errors.githubLink && touched.githubLink ? errors.githubLink : null
           }
         />
-        <Check
+        <Agreement
           value={formik.values.agreement}
           onChange={formik.handleChange}
           className={s.agreement}
           name="agreement"
-        >
-          <span>
-            * Я согласен с{' '}
-            <a onClick={() => console.log('show agreement')}>
-              политикой конфиденциальности
-            </a>
-          </span>
-        </Check>
+          onClickLink={() => setShowPrivacy(true)}
+        />
         <Button
           onClick={formik.handleSubmit}
           className={s.submit}
@@ -160,6 +163,37 @@ export const CandidateForm = () => {
           }
         />
       </form>
+      <Modal
+        isOpen={showSuccess}
+        title={`Спасибо ${formik.values.firstName}!`}
+        text="Мы скоро свяжимся с вами"
+        confirmBtnText="Понятно"
+        className={cs(s.modal, s.modal_confirm)}
+        openModalClassname={s.modal_open_confirm}
+        onConfirm={() => {
+          setShowSuccess(false)
+          formik.resetForm()
+        }}
+        onClose={() => {
+          setShowSuccess(false)
+        }}
+      />
+      <Modal
+        isOpen={showPrivacy}
+        title="Политика конфиденциальности"
+        confirmBtnText="Я согласен"
+        className={cs(s.modal, s.modal_privacy)}
+        openModalClassname={s.modal_open_privacy}
+        onConfirm={() => {
+          setShowPrivacy(false)
+          formik.setFieldValue('agreement', true)
+        }}
+        onClose={() => {
+          setShowPrivacy(false)
+        }}
+      >
+        <Privacy className={s.privacy} />
+      </Modal>
     </div>
   )
 }
